@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "421497096059",
+    "firebase_url": "https://uasmobile-bf54a.firebaseio.com",
+    "project_id": "uasmobile-bf54a",
+    "storage_bucket": "uasmobile-bf54a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421497096059:android:ab15ff41fa1befd4751fde",
+        "android_client_info": {
+          "package_name": "com.zenai.ticketonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421497096059-2q3ctbe6ta5mdesf2i1g8qie2f8a9sfs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zenai.ticketonline",
+            "certificate_hash": "0e57382b3010411e4f295d63ae535d2061deeb52"
+          }
+        },
+        {
+          "client_id": "421497096059-9d3rdu2v3aa0ninil3ufk5809d8svrpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBimTKUre-_ZUFzLLxIlaUt9gf3fVOpX-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421497096059-9d3rdu2v3aa0ninil3ufk5809d8svrpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
