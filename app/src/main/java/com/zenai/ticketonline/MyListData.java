@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,7 +41,8 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
         super.onCreate(savedInstanceState);
         setContentView(R .layout.activity_my_list_data);
         recyclerView = findViewById(R.id.datalist);
-        getSupportActionBar().setTitle("Data Mahasiswa");
+        TextView title = findViewById(R.id.title);
+        title.setText("Data Mahasiswa");
         auth = FirebaseAuth.getInstance();
         MyRecyclerView();
         GetData();
