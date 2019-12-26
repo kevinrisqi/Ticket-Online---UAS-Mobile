@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_add_tour"
+        android:title="Tour"
+        android:icon="@drawable/icons8_train_ticket_80" />
+    <item android:id="@+id/action_list_tour"
+        android:title="List Tour"
+        android:icon="@drawable/icons8_schedule_100" />
+    <item android:id="@+id/action_profile"
+        android:title="Profile"
+        android:icon="@drawable/icons8_about_50" />
+
+</menu>
