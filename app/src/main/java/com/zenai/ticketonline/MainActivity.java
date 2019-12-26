@@ -149,6 +149,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
 
+            case R.id.showdata:
+                startActivity(new Intent(MainActivity.this, MyListData.class));
+                break;
+
             case R.id.logout:
                 // Statement program untuk logout/keluar
                 AuthUI.getInstance()
