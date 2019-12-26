@@ -3,4 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="text">#FFFFFF</color>
+    <color name="help">#54ABDA</color>
+    <color name="signin">#FF8F00</color>
+    <color name="btlogin">#0B0B0C</color>
+    <color name="btlogingoogle">#68686B</color>
+
+    <color name="myBlue">#272DC5</color>
+    <color name="myBlueDark">#141B58</color>
 </resources>
