@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zenai.ticketonline.MyListData;
 import com.zenai.ticketonline.R;
+import com.zenai.ticketonline.UpdateData;
 import com.zenai.ticketonline.models.data_mahasiswa;
 
 import java.util.ArrayList;
@@ -99,7 +100,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 bundle.putString("dataNama", listMahasiswa.get(position).getNama());
                                 bundle.putString("dataJurusan", listMahasiswa.get(position).getJurusan());
                                 bundle.putString("getPrimaryKey", listMahasiswa.get(position).getKey());
-                                Intent intent = new Intent(view.getContext(), updateData.class);
+                                Intent intent = new Intent(view.getContext(), UpdateData.class);
                                 intent.putExtras(bundle);
                                 context.startActivity(intent);
                                 break;
