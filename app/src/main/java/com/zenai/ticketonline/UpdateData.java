@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,16 +24,18 @@ public class UpdateData extends AppCompatActivity {
     private DatabaseReference database;
     private FirebaseAuth auth;
     private String cekNIM, cekNama, cekJurusan;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_data);
-        getSupportActionBar().setTitle("Update Data");
         nimBaru = findViewById(R.id.new_nim);
         namaBaru = findViewById(R.id.new_nama);
         jurusanBaru = findViewById(R.id.new_jurusan);
         update = findViewById(R.id.update);
+        title = findViewById(R.id.title);
+        title.setText("Update Data");
 
         //Mendapatkan Instance autentikasi dan Referensi dari Database
         auth = FirebaseAuth.getInstance();

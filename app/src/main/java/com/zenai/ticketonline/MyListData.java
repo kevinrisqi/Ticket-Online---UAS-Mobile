@@ -35,13 +35,14 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
     private ArrayList<data_mahasiswa> dataMahasiswa;
 
     private FirebaseAuth auth;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R .layout.activity_my_list_data);
         recyclerView = findViewById(R.id.datalist);
-        TextView title = findViewById(R.id.title);
+        title = findViewById(R.id.title);
         title.setText("Data Mahasiswa");
         auth = FirebaseAuth.getInstance();
         MyRecyclerView();
