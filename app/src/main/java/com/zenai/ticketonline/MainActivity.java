@@ -29,10 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressBar progressBar;
     private EditText NIM, Nama, Jurusan;
     private FirebaseAuth auth;
-    private Button Logout, Simpan, Login, ShowData;
+    private Button Logout, Simpan, ShowData;
 
-    //Membuat Kode Permintaan
-    private int RC_SIGN_IN = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Logout.setOnClickListener(this);
         Simpan = findViewById(R.id.save);
         Simpan.setOnClickListener(this);
-        Login = findViewById(R.id.login);
-        Login.setOnClickListener(this);
         ShowData = findViewById(R.id.showdata);
         ShowData.setOnClickListener(this);
 
@@ -59,56 +55,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Nama = findViewById(R.id.nama);
         Jurusan = findViewById(R.id.jurusan);
 
-        /*
-         * Mendeteksi apakah ada user yang masuk, Jika tidak, maka setiap komponen UI akan dinonaktifkan
-         * Kecuali Tombol Login. Dan jika ada user yang terautentikasi, semua fungsi/komponen
-         * didalam User Interface dapat digunakan, kecuali tombol Logout
-         */
-        if(auth.getCurrentUser() == null){
-            defaultUI();
-        }else {
-            updateUI();
-        }
     }
 
-    //Tampilan Default pada Activity jika user belum terautentikasi
-    private void defaultUI(){
-        Logout.setEnabled(false);
-        Simpan.setEnabled(false);
-        ShowData.setEnabled(false);
-        Login.setEnabled(true);
-        NIM.setEnabled(false);
-        Nama.setEnabled(false);
-        Jurusan.setEnabled(false);
-    }
 
-    //Tampilan User Interface pada Activity setelah user Terautentikasi
-    private void updateUI(){
-        Logout.setEnabled(true);
-        Simpan.setEnabled(true);
-        Login.setEnabled(false);
-        ShowData.setEnabled(true);
-        NIM.setEnabled(true);
-        Nama.setEnabled(true);
-        Jurusan.setEnabled(true);
-        progressBar.setVisibility(View.GONE);
-    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.login:
-                // Statement program untuk login/masuk
-                startActivityForResult(AuthUI.getInstance()
-                                .createSignInIntentBuilder()
-
-                                //Memilih Provider atau Method masuk yang akan kita gunakan
-                                .setAvailableProviders(Collections.singletonList(new AuthUI.IdpConfig.GoogleBuilder().build()))
-                                .setIsSmartLockEnabled(false)
-                                .build(),
-                        RC_SIGN_IN);
-                progressBar.setVisibility(View.VISIBLE);
-                break;
 
             case R.id.save:
                 //Mendapatkan UserID dari pengguna yang Terautentikasi
@@ -174,20 +127,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return TextUtils.isEmpty(s);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // RC_SIGN_IN adalah kode permintaan yang Anda berikan ke startActivityForResult, saat memulai masuknya arus.
-        if (requestCode == RC_SIGN_IN) {
-
-            //Berhasil masuk
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(MainActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                updateUI();
-            }else {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(MainActivity.this, "Login Dibatalkan", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
 
 }
