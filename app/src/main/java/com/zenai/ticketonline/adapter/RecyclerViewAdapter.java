@@ -18,6 +18,7 @@ import com.zenai.ticketonline.MyListData;
 import com.zenai.ticketonline.R;
 import com.zenai.ticketonline.UpdateData;
 import com.zenai.ticketonline.models.data_mahasiswa;
+import com.zenai.ticketonline.models.data_wisata;
 
 import java.util.ArrayList;
 
@@ -25,20 +26,20 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     //Deklarasi Variable
-    private ArrayList<data_mahasiswa> listMahasiswa;
+    private ArrayList<data_wisata> listWisata;
     private Context context;
 
     //Membuat Interfece
     public interface dataListener{
-        void onDeleteData(data_mahasiswa data, int position);
+        void onDeleteData(data_wisata data, int position);
     }
 
     //Deklarasi objek dari Interfece
     dataListener listener;
 
     //Membuat Konstruktor, untuk menerima input dari Database
-    public RecyclerViewAdapter(ArrayList<data_mahasiswa> listMahasiswa, Context context) {
-        this.listMahasiswa = listMahasiswa;
+    public RecyclerViewAdapter(ArrayList<data_wisata> listWisata, Context context) {
+        this.listWisata = listWisata;
         this.context = context;
         listener = (MyListData)context;
     }
@@ -46,15 +47,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     //ViewHolder Digunakan Untuk Menyimpan Referensi Dari View-View
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView NIM, Nama, Jurusan;
+        private TextView name, location, price, description;
         private LinearLayout ListItem;
 
         ViewHolder(View itemView) {
             super(itemView);
             //Menginisialisasi View-View yang terpasang pada layout RecyclerView kita
-            NIM = itemView.findViewById(R.id.nim);
-            Nama = itemView.findViewById(R.id.nama);
-            Jurusan = itemView.findViewById(R.id.jurusan);
+            name = itemView.findViewById(R.id.name);
+            location = itemView.findViewById(R.id.location);
+            price = itemView.findViewById(R.id.price);
+            description = itemView.findViewById(R.id.description);
             ListItem = itemView.findViewById(R.id.list_item);
         }
     }
@@ -70,14 +72,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         //Mengambil Nilai/Value yenag terdapat pada RecyclerView berdasarkan Posisi Tertentu
-        final String NIM = listMahasiswa.get(position).getNim();
-        final String Nama = listMahasiswa.get(position).getNama();
-        final String Jurusan = listMahasiswa.get(position).getJurusan();
+        final String nama = listWisata.get(position).getNama();
+        final String location = listWisata.get(position).getLokasi();
+        final int price = listWisata.get(position).getHarga();
+        final String description = listWisata.get(position).getDeskripsi();
 
         //Memasukan Nilai/Value kedalam View (TextView: NIM, Nama, Jurusan)
-        holder.NIM.setText("NIM: "+NIM);
-        holder.Nama.setText("Nama: "+Nama);
-        holder.Jurusan.setText("Jurusan: "+Jurusan);
+        holder.name.setText("Name: "+nama);
+        holder.location.setText("Location: "+location);
+        holder.price.setText("Price: "+price);
+        holder.description.setText("Description: "+description);
 
         //Menampilkan Menu Update dan Delete saat user melakukan long klik pada salah satu item
         holder.ListItem.setOnLongClickListener(new View.OnLongClickListener() {
@@ -96,17 +100,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                   untuk dikirim pada activity updateData
                                  */
                                 Bundle bundle = new Bundle();
-                                bundle.putString("dataNIM", listMahasiswa.get(position).getNim());
-                                bundle.putString("dataNama", listMahasiswa.get(position).getNama());
-                                bundle.putString("dataJurusan", listMahasiswa.get(position).getJurusan());
-                                bundle.putString("getPrimaryKey", listMahasiswa.get(position).getKey());
+                                bundle.putString("dataNama", listWisata.get(position).getNama());
+                                bundle.putString("dataLocation", listWisata.get(position).getLokasi());
+                                bundle.putInt("dataPrice", listWisata.get(position).getHarga());
+                                bundle.putString("dataDescription", listWisata.get(position).getDeskripsi());
+                                bundle.putString("getPrimaryKey", listWisata.get(position).getKey());
                                 Intent intent = new Intent(view.getContext(), UpdateData.class);
                                 intent.putExtras(bundle);
                                 context.startActivity(intent);
                                 break;
                             case 1:
                                 //Menggunakan interface untuk mengirim data mahasiswa, yang akan dihapus
-                                listener.onDeleteData(listMahasiswa.get(position), position);
+                                listener.onDeleteData(listWisata.get(position), position);
                                 break;
                         }
                     }
@@ -121,7 +126,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
         //Menghitung Ukuran/Jumlah Data Yang Akan Ditampilkan Pada RecyclerView
-        return listMahasiswa.size();
+        return listWisata.size();
     }
 
 }

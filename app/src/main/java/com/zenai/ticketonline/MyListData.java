@@ -19,7 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.zenai.ticketonline.adapter.RecyclerViewAdapter;
-import com.zenai.ticketonline.models.data_mahasiswa;
+//import com.zenai.ticketonline.models.data_mahasiswa;
+import com.zenai.ticketonline.models.data_wisata;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
 
     //Deklarasi Variable Database Reference dan ArrayList dengan Parameter Class Model kita.
     private DatabaseReference reference;
-    private ArrayList<data_mahasiswa> dataMahasiswa;
+    private ArrayList<data_wisata> dataWisata;
 
     private FirebaseAuth auth;
     private TextView title;
@@ -43,7 +44,7 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
         setContentView(R .layout.activity_my_list_data);
         recyclerView = findViewById(R.id.datalist);
         title = findViewById(R.id.title);
-        title.setText("Data Mahasiswa");
+        title.setText("Data Wisata");
         auth = FirebaseAuth.getInstance();
         MyRecyclerView();
         GetData();
@@ -53,24 +54,24 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
     private void GetData(){
         //Mendapatkan Referensi Database
         reference = FirebaseDatabase.getInstance().getReference();
-        reference.child("Admin").child(auth.getUid()).child("Mahasiswa")
+        reference.child("Ticket Online").child(auth.getUid()).child("Tours")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         //Inisialisasi ArrayList
-                        dataMahasiswa = new ArrayList<>();
+                        dataWisata = new ArrayList<>();
 
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                             //Mapping data pada DataSnapshot ke dalam objek mahasiswa
-                            data_mahasiswa mahasiswa = snapshot.getValue(data_mahasiswa.class);
+                            data_wisata wisata = snapshot.getValue(data_wisata.class);
 
                             //Mengambil Primary Key, digunakan untuk proses Update dan Delete
-                            mahasiswa.setKey(snapshot.getKey());
-                            dataMahasiswa.add(mahasiswa);
+                            wisata.setKey(snapshot.getKey());
+                            dataWisata.add(wisata);
                         }
 
                         //Inisialisasi Adapter dan data Mahasiswa dalam bentuk Array
-                        adapter = new RecyclerViewAdapter(dataMahasiswa, MyListData.this);
+                        adapter = new RecyclerViewAdapter(dataWisata, MyListData.this);
 
                         //Memasang Adapter pada RecyclerView
                         recyclerView.setAdapter(adapter);
@@ -103,7 +104,7 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
     }
 
     @Override
-    public void onDeleteData(data_mahasiswa data, int position) {
+    public void onDeleteData(data_wisata data, int position) {
         /*
          * Kode ini akan dipanggil ketika method onDeleteData
          * dipanggil dari adapter pada RecyclerView melalui interface.
@@ -112,9 +113,9 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
          */
         String userID = auth.getUid();
         if(reference != null){
-            reference.child("Admin")
+            reference.child("Ticket Online")
                     .child(userID)
-                    .child("Mahasiswa")
+                    .child("Tours")
                     .child(data.getKey())
                     .removeValue()
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

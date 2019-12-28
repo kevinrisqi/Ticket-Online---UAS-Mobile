@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Collections;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener  {
     private EditText username,password;
     private Button login,loginGoogle;
     private FirebaseAuth auth;
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         auth = FirebaseAuth.getInstance(); //Mendapakan Instance Firebase Autentifikasi
 
         if(auth.getCurrentUser() == null){
-            startActivity(new Intent(this,LoginActivity.class));
+
         }
         else {
             startActivity(new  Intent(this,MainActivity.class));

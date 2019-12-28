@@ -8,6 +8,7 @@
     <color name="signin">#FF8F00</color>
     <color name="btlogin">#0B0B0C</color>
     <color name="btlogingoogle">#68686B</color>
+    <color name="btnlogout">#DA2D2D</color>
 
     <color name="myBlue">#272DC5</color>
     <color name="myBlueDark">#141B58</color>

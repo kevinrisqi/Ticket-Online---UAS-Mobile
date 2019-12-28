@@ -5,6 +5,15 @@ public class data_wisata {
     private String lokasi;
     private String deskripsi;
     private int harga;
+    private String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public data_wisata(){
 

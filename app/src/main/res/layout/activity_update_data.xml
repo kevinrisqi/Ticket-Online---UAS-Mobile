@@ -16,15 +16,7 @@
         android:layout_marginBottom="30dp"/>
 
     <EditText
-        android:id="@+id/new_nim"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="NIM Baru"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/new_nama"
+        android:id="@+id/new_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -32,11 +24,27 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/new_jurusan"
+        android:id="@+id/new_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Jurusan Baru"
+        android:hint="Lokasi Baru"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/new_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Harga Baru"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/new_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Deskripsi Baru"
         android:inputType="textPersonName" />
 
     <Button

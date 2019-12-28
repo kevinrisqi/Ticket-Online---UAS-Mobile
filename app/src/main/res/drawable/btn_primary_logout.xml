@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <solid
-        android:color="@color/text"
+        android:color="@color/btnlogout"
         />
 
 
@@ -11,5 +11,5 @@
         android:radius="8dp"
         />
 
- 
+
 </shape>
