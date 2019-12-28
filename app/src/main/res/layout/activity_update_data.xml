@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Harga Baru"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/new_description"
