@@ -76,13 +76,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Menyimpan Data yang diinputkan User kedalam Variable
                 String getName = name.getText().toString();
                 String getLocation = location.getText().toString();
-                int getPrice = Integer.parseInt(price.getText().toString());
+                Integer getPrice = Integer.parseInt(price.getText().toString());
                 String getDescription = description.getText().toString();
 
                 getReference = database.getReference(); // Mendapatkan Referensi dari Database
 
                 // Mengecek apakah ada data yang kosong
-                if (isEmpty(getName) || isEmpty(getLocation) || isEmpty(getDescription) ) {
+                if (isEmpty(getName) || isEmpty(getLocation) || isEmpty(getPrice) || isEmpty(getDescription) ) {
                     //Jika Ada, maka akan menampilkan pesan singkan seperti berikut ini.
                     Toast.makeText(MainActivity.this, "Data tidak boleh ada yang kosong", Toast.LENGTH_SHORT).show();
                 } else {
@@ -129,6 +129,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // Mengecek apakah ada data yang kosong
     private boolean isEmpty(String s){
         return TextUtils.isEmpty(s);
+    }
+    private boolean isEmpty(Integer s){
+        return TextUtils.isEmpty(""+s);
     }
 
 
